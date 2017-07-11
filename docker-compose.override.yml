@@ -1,0 +1,12 @@
+version: '2'
+services:
+
+  backend:
+    container_name: graphql_backend
+    volumes:
+      - ./app:/app
+      - ./logs/nginx:/var/log/nginx/
+    labels:
+      - lb.hook=true
+    ports:
+     - "8080:80"
