@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: dev-lusaja
- * Date: 07/07/17
- * Time: 04:07 PM
- */
-
 namespace MyApp\Registry;
 
 use MyApp\Types\packageType;
@@ -21,6 +14,11 @@ class Registry
     public static function queryType()
     {
         return static::$queryType?:(static::$queryType = new queryType());
+    }
+
+    public static function mutationType()
+    {
+        return null;
     }
 
     public static function packageType()

@@ -13,24 +13,26 @@ class queryType extends ObjectType
     {
         $type = [
             'name' => 'Query',
-            'fields' => [
-                'package' => [
-                    'type' => Registry::packageType(),
-                    'args' => [
-                        'id' => Type::id(),
+            'fields' => function (){
+                return [
+                    'package' => [
+                        'type' => Registry::packageType(),
+                        'args' => [
+                            'id' => Type::id(),
+                        ],
+                        'resolve' => function($value, $args, packageController  $context, ResolveInfo $info){
+                            return $context->getPackageById($args['id']);
+                        }
                     ],
-                    'resolve' => function($value, $args, packageController  $context, ResolveInfo $info){
-                        return $context->getPackageById($args['id']);
-                    }
-                ],
-                'packages' => [
-                    'type' => Type::listOf(Registry::packageType()),
-                    'resolve' =>  function($value, $args, packageController  $context, ResolveInfo $info){
-                        $packages = $context->getAllPackages();
-                        return $packages;
-                    }
-                ],
-            ],
+                    'packages' => [
+                        'type' => Type::listOf(Registry::packageType()),
+                        'resolve' =>  function($value, $args, packageController  $context, ResolveInfo $info){
+                            $packages = $context->getAllPackages();
+                            return $packages;
+                        }
+                    ],
+                ];
+            },
         ];
         parent::__construct($type);
     }

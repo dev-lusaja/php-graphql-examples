@@ -11,6 +11,7 @@ class packageSchema extends Schema
     {
         parent::__construct([
             'query' => Registry::queryType(),
+            'mutation' => Registry::mutationType(),
         ]);
     }
 }
