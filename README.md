@@ -14,7 +14,7 @@ $ make up
 $ make composer
 ~~~~
 
-* test the API via curl ( with id filter)
+* Query test to API using curl ( with id filter)
 ~~~~
 curl http://localhost:8080 -d '{"execute": "query { package(id: \"A\"){id name details price{currency amount}} }" }'
 ~~~~
@@ -39,7 +39,7 @@ curl http://localhost:8080 -d '{"execute": "query { package(id: \"A\"){id name d
 }
 ```
 
-* test the API via curl ( without filter)
+* Query test to API using curl ( without filter)
 ~~~~
 curl http://localhost:8080 -d '{"execute": "query { packages{ id name price{currency amount} } }" }'
 ~~~~
@@ -78,6 +78,23 @@ curl http://localhost:8080 -d '{"execute": "query { packages{ id name price{curr
     }
 }
 ```
+
+* Mutation type to aPI using curl (add)
+~~~~
+curl http://localhost:8080 -d '{"execute": "mutation { add( package: {name: \"Package Mutation\" price: {amount: 100 currency: \"$\"} details: [\"Detail 1\", \"Detail 2\" ] } ){id name} }" }'
+~~~~
+> response
+```json
+{
+    "data": {
+        "add": {
+            "id": "1499981937X",
+            "name": "Package Mutation"
+        }
+    }
+}
+```
+
 
 **NOTE:**
 > For more commands execute

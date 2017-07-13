@@ -1,10 +1,17 @@
 <?php
 require '../vendor/autoload.php';
 use GraphQL\GraphQL;
+use \GraphQL\Error\FormattedError;
 use MyApp\Schemas\packageSchema;
 use MyApp\Controllers\packageController;
+use MyApp\Mockup\Data;
 
 try {
+
+    // Carga data mockup en memoria cache
+    if (!apcu_exists('data')){
+        Data::init();
+    }
     $rawInput = file_get_contents('php://input');
     $input = json_decode($rawInput, true);
 
@@ -15,11 +22,9 @@ try {
     $operationName = null;
 
     $result = GraphQL::execute(new packageSchema(), $query, $rootResolverValue, $allResolversContext, $variableValues, $operationName);
-} catch (\Exception $e) {
+} catch (\Exception $error) {
     $result = [
-        'error' => [
-            'message' => $e->getMessage()
-        ]
+        'exception' => FormattedError::createFromException($error)
     ];
 }
 

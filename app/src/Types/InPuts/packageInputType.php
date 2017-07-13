@@ -1,28 +1,25 @@
 <?php
-namespace MyApp\Types;
+namespace MyApp\Types\InPuts;
 
-use GraphQL\Type\Definition\ObjectType;
+use GraphQL\Type\Definition\InputObjectType;
 use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
 use MyApp\Registry\Registry;
 
-class packageType extends ObjectType
+class packageInputType extends InputObjectType
 {
     public function __construct()
     {
 
         $type = [
-            'name' => 'packageType',
+            'name' => 'packageInputType',
             'fields' => function() {
                 return [
-                    'id' => [
-                        'type' => Type::id(),
-                    ],
                     'name' => [
                         'type' => Type::string(),
                     ],
                     'price' => [
-                        'type' => Registry::priceType(),
+                        'type' => Registry::priceInputType(),
                     ],
                     'details' => [
                         'type' => Type::listOf(Type::string()),
@@ -30,11 +27,7 @@ class packageType extends ObjectType
                 ];
             },
             'resolveField' => function($value, $args, $context, ResolveInfo $info){
-                if (isset($value[$info->fieldName])){
-                    return $value[$info->fieldName];
-                } else {
-                    return null;
-                }
+                return null;
             }
         ];
         parent::__construct($type);

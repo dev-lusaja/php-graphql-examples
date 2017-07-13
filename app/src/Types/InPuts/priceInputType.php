@@ -1,22 +1,18 @@
 <?php
-namespace MyApp\Types;
+namespace MyApp\Types\InPuts;
 
-use GraphQL\Type\Definition\ObjectType;
+use GraphQL\Type\Definition\InputObjectType;
 use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
 
-class priceType extends ObjectType
+class priceInputType extends InputObjectType
 {
     public function __construct()
     {
         $type = [
-            'name' => 'priceType',
+            'name' => 'priceInputType',
             'fields' => function() {
                 return [
-                    'id' => [
-                        'type' => Type::id(),
-                        'description' => 'id for price',
-                    ],
                     'amount' => [
                         'type' => Type::float(),
                         'description' => 'amount',

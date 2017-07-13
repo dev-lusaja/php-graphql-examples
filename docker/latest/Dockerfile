@@ -11,6 +11,7 @@ RUN yum -y update && yum -y install \
     php70-intl \
     php70-phar \
     php70-json \
+    php70-pecl-apcu \
     git \
     openssh \
     unzip

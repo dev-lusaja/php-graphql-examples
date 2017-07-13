@@ -1,15 +1,21 @@
 <?php
 namespace MyApp\Registry;
 
-use MyApp\Types\packageType;
-use MyApp\Types\priceType;
+use MyApp\Types\OutPuts\packageType;
+use MyApp\Types\OutPuts\priceType;
+use MyApp\Types\InPuts\priceInputType;
+use MyApp\Types\InPuts\packageInputType;
 use MyApp\Types\queryType;
+use MyApp\Types\mutationType;
 
 class Registry
 {
     private static $queryType;
     private static $packageType;
     private static $priceType;
+    private static $mutation;
+    private static $packageInputType;
+    private static $priceInputType;
 
     public static function queryType()
     {
@@ -18,7 +24,7 @@ class Registry
 
     public static function mutationType()
     {
-        return null;
+        return static::$mutation?:(static::$mutation = new mutationType());
     }
 
     public static function packageType()
@@ -29,5 +35,15 @@ class Registry
     public static function priceType()
     {
         return static::$priceType?:(static::$priceType = new priceType());
+    }
+
+    public static function packageInputType()
+    {
+        return static::$packageInputType?:(static::$packageInputType = new packageInputType());
+    }
+
+    public static function priceInputType()
+    {
+        return static::$priceInputType?:(static::$priceInputType = new priceInputType());
     }
 }
