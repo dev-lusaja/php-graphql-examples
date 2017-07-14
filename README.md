@@ -97,11 +97,18 @@ curl http://localhost:8080 -d '{"execute": "mutation { add( package: {name: \"Pa
 
 * Mutation test to API using curl (update)
 ~~~~
-curl http://localhost:8080 -d '{"execute": "mutation { update( id: \"1500041535X\", package: {name: \"Package Updated\" price: {amount: 100 currency: \"$\"} details: [\"Detail 1\", \"Detail 2\" ] } ){id name} }" }'
+curl http://localhost:8080 -d '{"execute": "mutation { update( id: \"1499981937X\", package: {name: \"Package Updated\" price: {amount: 100 currency: \"$\"} details: [\"Detail 1\", \"Detail 2\" ] } ){id name} }" }'
 ~~~~
 > response
 ```json
-
+{
+    "data": {
+        "update": {
+            "id": "1499981937X",
+            "name": "Package Updated"
+        }
+    }
+}
 ```
 
 * Mutation test to API using curl (remove)
