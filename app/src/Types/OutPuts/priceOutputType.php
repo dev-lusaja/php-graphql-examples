@@ -2,10 +2,9 @@
 namespace MyApp\Types\OutPuts;
 
 use GraphQL\Type\Definition\ObjectType;
-use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
 
-class priceType extends ObjectType
+class priceOutputType extends ObjectType
 {
     public function __construct()
     {

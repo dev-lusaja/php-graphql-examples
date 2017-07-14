@@ -26,9 +26,6 @@ class packageInputType extends InputObjectType
                     ]
                 ];
             },
-            'resolveField' => function($value, $args, $context, ResolveInfo $info){
-                return null;
-            }
         ];
         parent::__construct($type);
     }

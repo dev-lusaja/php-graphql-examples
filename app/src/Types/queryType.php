@@ -5,7 +5,7 @@ use GraphQL\Type\Definition\ObjectType;
 use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
 use MyApp\Registry\Registry;
-use MyApp\Controllers\packageController;
+use MyApp\Contexts\packageContext;
 
 class queryType extends ObjectType
 {
@@ -16,17 +16,17 @@ class queryType extends ObjectType
             'fields' => function (){
                 return [
                     'package' => [
-                        'type' => Registry::packageType(),
+                        'type' => Registry::packageOutputType(),
                         'args' => [
                             'id' => Type::id(),
                         ],
-                        'resolve' => function($value, $args, packageController  $context, ResolveInfo $info){
+                        'resolve' => function($value, $args, packageContext  $context, ResolveInfo $info){
                             return $context->getPackageById($args['id']);
                         }
                     ],
                     'packages' => [
-                        'type' => Type::listOf(Registry::packageType()),
-                        'resolve' =>  function($value, $args, packageController  $context, ResolveInfo $info){
+                        'type' => Type::listOf(Registry::packageOutputType()),
+                        'resolve' =>  function($value, $args, packageContext  $context, ResolveInfo $info){
                             $packages = $context->getAllPackages();
                             return $packages;
                         }

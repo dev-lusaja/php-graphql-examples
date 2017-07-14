@@ -1,8 +1,8 @@
 <?php
 namespace MyApp\Registry;
 
-use MyApp\Types\OutPuts\packageType;
-use MyApp\Types\OutPuts\priceType;
+use MyApp\Types\OutPuts\packageOutputType;
+use MyApp\Types\OutPuts\priceOutputType;
 use MyApp\Types\InPuts\priceInputType;
 use MyApp\Types\InPuts\packageInputType;
 use MyApp\Types\queryType;
@@ -11,38 +11,38 @@ use MyApp\Types\mutationType;
 class Registry
 {
     private static $queryType;
-    private static $packageType;
-    private static $priceType;
+    private static $packageOutputType;
+    private static $priceOutputType;
     private static $mutation;
     private static $packageInputType;
     private static $priceInputType;
 
-    public static function queryType()
+    public static function queryType(): queryType
     {
         return static::$queryType?:(static::$queryType = new queryType());
     }
 
-    public static function mutationType()
+    public static function mutationType(): mutationType
     {
         return static::$mutation?:(static::$mutation = new mutationType());
     }
 
-    public static function packageType()
+    public static function packageOutputType(): packageOutputType
     {
-        return static::$packageType?:(static::$packageType = new packageType());
+        return static::$packageOutputType?:(static::$packageOutputType = new packageOutputType());
     }
 
-    public static function priceType()
+    public static function priceOutputType(): priceOutputType
     {
-        return static::$priceType?:(static::$priceType = new priceType());
+        return static::$priceOutputType?:(static::$priceOutputType = new priceOutputType());
     }
 
-    public static function packageInputType()
+    public static function packageInputType(): packageInputType
     {
         return static::$packageInputType?:(static::$packageInputType = new packageInputType());
     }
 
-    public static function priceInputType()
+    public static function priceInputType(): priceInputType
     {
         return static::$priceInputType?:(static::$priceInputType = new priceInputType());
     }

@@ -28,8 +28,14 @@ status: ## Show containers status, use me with: make status
 ssh: ## Connect to conainer for ssh protocol
 	docker exec -it $(CONTAINER_NAME) bash
 
-composer:
+composer: ## Install all dependencies
 	@docker exec -ti $(CONTAINER_NAME) composer update
+
+log: ## Show the application logs (error.log)
+	docker exec -it graphql_backend tail -f /var/log/nginx/error.log
+
+ssh: ## SSH connect to container
+	docker exec -it graphql_backend bash
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-16s\033[0m %s\n", $$1, $$2}'

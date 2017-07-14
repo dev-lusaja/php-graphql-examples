@@ -4,11 +4,13 @@ namespace MyApp\Mockup;
 
 class Data
 {
-    public static $value;
 
-    public static function init()
+    /**
+     *
+     */
+    public static function init(): void
     {
-        self::$value = [
+        $data = [
             'A' => ['id' => 'A',
                     'name' => 'PackageName A',
                     'details' => [
@@ -34,6 +36,6 @@ class Data
                     'currency' => "$",
                 ]],
         ];
-        apcu_store('data', self::$value);
+        apcu_store('data', $data);
     }
 }

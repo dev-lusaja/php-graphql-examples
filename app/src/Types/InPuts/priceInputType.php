@@ -2,7 +2,6 @@
 namespace MyApp\Types\InPuts;
 
 use GraphQL\Type\Definition\InputObjectType;
-use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
 
 class priceInputType extends InputObjectType

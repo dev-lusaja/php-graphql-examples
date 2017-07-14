@@ -6,7 +6,7 @@ use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
 use MyApp\Registry\Registry;
 
-class packageType extends ObjectType
+class packageOutputType extends ObjectType
 {
     public function __construct()
     {
@@ -22,7 +22,7 @@ class packageType extends ObjectType
                         'type' => Type::string(),
                     ],
                     'price' => [
-                        'type' => Registry::priceType(),
+                        'type' => Registry::priceOutputType(),
                     ],
                     'details' => [
                         'type' => Type::listOf(Type::string()),
