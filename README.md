@@ -14,6 +14,11 @@ $ make up
 $ make composer
 ~~~~
 
+* Show error logs (nginx)
+~~~~
+$ make log
+~~~~
+
 * Query test to API using curl ( with id filter)
 ~~~~
 curl http://localhost:8080 -d '{"execute": "query { package(id: \"A\"){id name details price{currency amount}} }" }'
